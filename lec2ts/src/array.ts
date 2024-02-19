@@ -39,11 +39,4 @@
 // }
 // console.log(isLegal1(user1));
 
-enum Direction{
-    up,
-    down,
-    left,
-    right
-}
-let currentdirection=Direction.left;
-console.log(currentdirection);
+// let number=6;

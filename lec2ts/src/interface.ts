@@ -52,7 +52,7 @@ console.log("hello"+ this.name);
 
 // em1.greet();
 
-interface People extends Person{
+interface  People extends Person{
     adress:string
 }
 class Peopl implements People{
