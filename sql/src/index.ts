@@ -22,4 +22,16 @@ async function createUsersTable() {
     console.log(result)
 }
 
-createUsersTable();
+// createUsersTable();
+
+//crud;
+//1.insert
+
+async function insertData(username:string,email:string,password:string){
+    const querry= `INSERT INTO users (username, email, password) 
+    VALUES ($1, $2,$3 )`;
+    const value=[username,email,password];
+   const result=await client.query(querry,value);
+   console.log(result);
+}
+insertData("tushar","tushar@gmail.com","123456");
