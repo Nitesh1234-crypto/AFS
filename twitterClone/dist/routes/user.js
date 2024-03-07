@@ -28,14 +28,48 @@ router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(response);
     res.send("user added");
 }));
-router.get("/", (req, res) => {
-});
-router.get("/:id", (req, res) => {
-});
-router.get("/:username", (req, res) => {
-});
-router.delete("/:id", auth_1.verifyToken, (req, res) => {
-});
+router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let users = yield prisma.user.findMany();
+    res.send({ users });
+}));
+router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.body;
+    let user = yield prisma.user.findUnique({
+        where: {
+            id
+        }
+    });
+    res.send({ user });
+}));
+router.get("/:username", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { username } = req.body;
+    let users = yield prisma.user.findMany({
+        where: {
+            OR: [
+                {
+                    firstName: {
+                        contains: username
+                    },
+                    lastName: {
+                        contains: username
+                    }
+                }
+            ]
+        }
+    });
+    console.log({ users });
+}));
+router.delete("/:id", auth_1.verifyToken, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.body;
+    if (id != req.user.id)
+        return res.send("not a valid request");
+    let result = yield prisma.user.delete({
+        where: {
+            id
+        }
+    });
+    res.send("user deleted");
+}));
 router.put("/:id", auth_1.verifyToken, (req, res) => {
 });
 exports.default = router;

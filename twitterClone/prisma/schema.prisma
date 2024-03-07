@@ -18,6 +18,24 @@ model User{
   lastName String
   email String @unique
   password String
-  
+  like Like[]
+  twitt Twitt[]
+}
+
+model Twitt{
+  id Int @id @default(autoincrement())
+  title String
+  content String
+  userid Int
+  likeCount Int @default(0)
+  user User @relation(fields: [userid], references: [id], onDelete: Cascade)
+  like Like[] 
+}
+model Like{
+  id Int @id @default(autoincrement())
+  userid Int 
+  tweetid Int
+  user User @relation(fields: [userid],references: [id], onDelete: Cascade)
+  tweet Twitt @relation(fields: [tweetid],references: [id],onDelete: Cascade)
 }
 

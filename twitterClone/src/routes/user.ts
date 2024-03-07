@@ -26,6 +26,9 @@ router.get("/:id",async(req,res)=>{
     let user=await prisma.user.findUnique({
         where:{
             id
+        },
+        include:{
+            twitt:true
         }
     })
     res.send({user});
@@ -44,6 +47,9 @@ router.get("/:username",async(req,res)=>{
                 }
                }
             ]
+        },
+        include:{
+            twitt:true
         }
        
     })

@@ -2,6 +2,7 @@ import express from "express";
 import userRoute from "./routes/user";
 import loginRoute from "./routes/login";
 import twittRoute from "./routes/tweet";
+import likeRoute from "./routes/like";
 import cookieParser from "cookie-parser";
 const app =express();
 const PORT =3000;
@@ -15,7 +16,8 @@ app.get("/",(req,res)=>{
 //routes
 app.use("/user", userRoute);
 app.use("/twitt",twittRoute);
-app.use("/login",loginRoute)
+app.use("/login",loginRoute);
+app.use("/likes",likeRoute);
 app.listen(PORT,()=>{
     console.log(`http://localhost:${PORT}`)
 })
