@@ -1,2 +1,0 @@
--- AddForeignKey
-ALTER TABLE "Twitt" ADD CONSTRAINT "Twitt_userid_fkey" FOREIGN KEY ("userid") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
