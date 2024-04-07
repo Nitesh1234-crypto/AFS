@@ -1,4 +1,4 @@
-.board {
+/* .board {
   display: grid;
   grid-template-columns: repeat(3, 50px);
   grid-template-rows: repeat(3, 50px);
@@ -10,4 +10,4 @@
   height: 50px;
   font-size: 24px;
   text-align: center;
-}
+} */
