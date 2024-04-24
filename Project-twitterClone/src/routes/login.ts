@@ -21,7 +21,7 @@ router.post("/",async(req,res)=>{
 
    let token= createJwtToken(user);
    res.cookie("token",token);
-   res.redirect("/");
+   res.send({token});
    
 
 })

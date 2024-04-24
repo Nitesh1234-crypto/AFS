@@ -37,6 +37,9 @@ router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     let user = yield prisma.user.findUnique({
         where: {
             id
+        },
+        include: {
+            twitt: true
         }
     });
     res.send({ user });
@@ -55,6 +58,9 @@ router.get("/:username", (req, res) => __awaiter(void 0, void 0, void 0, functio
                     }
                 }
             ]
+        },
+        include: {
+            twitt: true
         }
     });
     console.log({ users });

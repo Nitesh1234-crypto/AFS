@@ -19,7 +19,7 @@ router.post("/",verifyToken,async(req,res)=>{
     res.send({result:result});
 })
 
-router.get("/",verifyToken,async (req,res)=>{
+router.get("/",async (req,res)=>{
      let alltweet=await prisma.twitt.findMany({
         include:{
             user:true  

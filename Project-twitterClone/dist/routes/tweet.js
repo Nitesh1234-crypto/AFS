@@ -30,4 +30,14 @@ router.post("/", auth_1.verifyToken, (req, res) => __awaiter(void 0, void 0, voi
     console.log(result);
     res.send({ result: result });
 }));
+router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let alltweet = yield prisma.twitt.findMany({
+        include: {
+            user: true
+        }
+    });
+    res.send({ tweets: alltweet });
+}));
+router.get("/:id", (req, res) => {
+});
 exports.default = router;

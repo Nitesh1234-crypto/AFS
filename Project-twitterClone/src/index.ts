@@ -5,8 +5,12 @@ import twittRoute from "./routes/tweet";
 import likeRoute from "./routes/like";
 import cookieParser from "cookie-parser";
 import retweetRoute from "./routes/retweet";
+import CORS from "cors"
+
 const app =express();
+
 const PORT =3000;
+app.use(CORS())
 app.use(cookieParser());
 app.use(express.json());
 app.set("view engine","hbs");
